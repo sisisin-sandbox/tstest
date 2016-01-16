@@ -1,20 +1,13 @@
 const gulp = require('gulp');
-const ts = require('gulp-typescript');
 const browserify = require('browserify');
+const tsify = require('tsify');
 const source = require('vinyl-source-stream');
 
-const tsProject = ts.createProject('tsconfig.json');
-
-gulp.task('tsc', () => {
-  return gulp.src('src/*.ts')
-    .pipe(ts(tsProject))
-    .pipe(gulp.dest('dist/'));
-});
-
-gulp.task('browserify', ['tsc'], () => {
-  return browserify({ entries: ['./dist/app.js']})
+gulp.task('browserify', () => {
+  return browserify({ entries: ['./src/app.ts']})
+    .plugin(tsify)
     .bundle()
-    .pipe(source('./tmp/app.js'))
+    .pipe(source('./dist/app.js'))
     .pipe(gulp.dest('./'));
 });
 
