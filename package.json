@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "gulp mocha"
+    "test": "gulp mocha",
+    "watch": "gulp watch",
+    "bundle": "gulp browserify"
   },
   "author": "",
   "license": "MIT",

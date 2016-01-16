@@ -23,3 +23,7 @@ gulp.task('mocha', () => {
 });
 
 gulp.task('default', ['browserify']);
+
+gulp.task('watch', () => {
+  gulp.watch(['./src/*.ts', './test/*.ts'], ['mocha']);
+});
